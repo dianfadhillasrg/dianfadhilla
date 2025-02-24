@@ -36,16 +36,16 @@
             color: #fffbe7;
             text-decoration: none;
             padding: 5px 10px;
-            border-radius: 5px;
-            transition: background 0.3s;
+            transition: background-color 0.3s, color 0.3s;
         }
         .nav a:hover {
             background-color: #fffbe7;
             color: #666033;
+            border-radius: 4px;
         }
         .container {
-            max-width: 90%;
-            width: 800px;
+            width: 90%;
+            max-width: 800px;
             margin: 20px auto;
             padding: 20px;
             background-color: #fffbe7;
@@ -56,38 +56,31 @@
             color: #666033;
         }
         form {
-            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
         }
         label {
-            font-weight: bold;
-            display: block;
             margin-top: 10px;
+            font-weight: bold;
         }
         input, textarea {
             width: 100%;
-            padding: 10px;
+            padding: 8px;
             margin-top: 5px;
-            border: 1px solid #ddd;
+            border: 1px solid #666033;
             border-radius: 4px;
-            font-size: 1rem;
-        }
-        input:focus, textarea:focus {
-            border-color: #666033;
-            outline: none;
         }
         button {
             margin-top: 15px;
-            padding: 10px 15px;
+            padding: 10px;
             background-color: #666033;
             color: white;
             border: none;
             cursor: pointer;
             border-radius: 4px;
-            font-size: 1rem;
-            transition: background 0.3s;
         }
         button:hover {
-            background-color: #4c4a26;
+            background-color: #4f4a27;
         }
     </style>
 </head>
@@ -103,25 +96,21 @@
     <div class="container">
         <h2>Hubungi Kami</h2>
         <p>Jika Anda memiliki pertanyaan, saran, atau ingin berdiskusi lebih lanjut, silakan isi formulir di bawah ini.</p>
-        
-        <form action="#" method="post">
+        <form>
             <label for="name">Nama</label>
-            <input type="text" id="name" name="name" required aria-label="Nama Lengkap">
+            <input type="text" id="name" name="name" required>
             
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required aria-label="Alamat Email">
+            <input type="email" id="email" name="email" required>
             
             <label for="phone">Nomor Telepon</label>
-            <input type="tel" id="phone" name="phone" aria-label="Nomor Telepon">
+            <input type="text" id="phone" name="phone" required>
             
             <label for="message">Pesan</label>
-            <textarea id="message" name="message" rows="4" required aria-label="Pesan Anda"></textarea>
+            <textarea id="message" name="message" rows="4" required></textarea>
             
             <button type="submit">Kirim</button>
         </form>
-        
-        <p>📩 Setelah mengisi formulir ini, pesan Anda akan segera diproses. Terima kasih telah menghubungi!</p>
     </div>
 </body>
 </html>
-
