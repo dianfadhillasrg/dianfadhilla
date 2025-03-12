@@ -4,92 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Perpustakaan Dian Fadhilla Siregar</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fffbe7;
-            text-align: justify;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #666033;
-            padding: 15px 20px;
-            color: #fffbe7;
-            flex-wrap: wrap;
-        }
-        .header h1 {
-            margin: 0;
-            flex-grow: 1;
-            text-align: left;
-            color: #fffbe7;
-        }
-        .nav {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .nav a {
-            color: #fffbe7;
-            text-decoration: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-        .nav a:hover {
-            background-color: #fffbe7;
-            color: #666033;
-        }
-        .container {
-            max-width: 90%;
-            width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fffbe7;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px (0, 0, 0, 0.1);
-        }
-        h1, h2, h3 {
-            color: #666033;
-        }
-        form {
-            margin-top: 20px;
-        }
-        label {
-            font-weight: bold;
-            display: block;
-            margin-top: 10px;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-        input:focus, textarea:focus {
-            border-color: #666033;
-            outline: none;
-        }
-        button {
-            margin-top: 15px;
-            padding: 10px 15px;
-            background-color: #666033;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 1rem;
-            transition: background 0.3s;
-        }
-        button:hover {
-            background-color: #4c4a26;
-        }
-    </style>
+    <link rel="stylesheet" href="style-contact.css">
 </head>
 <body>
     <div class="header">
@@ -104,23 +19,21 @@
         <h2>Hubungi Kami</h2>
         <p>Jika Anda memiliki pertanyaan, saran, atau ingin berdiskusi lebih lanjut, silakan isi formulir di bawah ini.</p>
         
-        <form action="#" method="post">
-            <label for="name">Nama</label>
-            <input type="text" id="name" name="name" required aria-label="Nama Lengkap">
+        <form action="https://formspree.io/f/mzzebjkq" method="POST">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
             
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required aria-label="Alamat Email">
+            <label for="phone">No. HP:</label>
+            <input type="text" id="phone" name="phone" required>
             
-            <label for="phone">Nomor Telepon</label>
-            <input type="tel" id="phone" name="phone" aria-label="Nomor Telepon">
+            <label for="message">Pesan:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
             
-            <label for="message">Pesan</label>
-            <textarea id="message" name="message" rows="4" required aria-label="Pesan Anda"></textarea>
-            
-            <button type="submit">Kirim</button>
+            <input type="submit" value="Kirim Pesan">
         </form>
+
+    <script src="contact.js"></script>
         
     </div>
 </body>
 </html>
-
