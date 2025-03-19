@@ -1,40 +1,98 @@
-document.querySelectorAll('.nav a').forEach(link => {
-    link.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth'
-            });
-        } else {
-            window.location.href = this.href; // Jika bukan id, langsung buka halaman
-        }
-    });
-});
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll('.container, .header').forEach(el => {
-        el.style.opacity = "0";
-        el.style.transform = "translateY(20px)";
-        el.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
-        setTimeout(() => {
-            el.style.opacity = "1";
-            el.style.transform = "translateY(0)";
-        }, 200);
-    });
-});
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    const links = document.querySelectorAll("a");
+document.addEventListener("DOMContentLoaded", function() {
+    const externalLink = document.querySelector('a[href="https://e-resources.perpusnas.go.id/"]');
     
-    links.forEach(link => {
-        link.addEventListener("click", function (event) {
-            const confirmation = confirm("Apakah Anda yakin ingin berpindah ke halaman lain?");
-            if (!confirmation) {
-                event.preventDefault(); // Mencegah navigasi jika pengguna memilih 'Batal'
+    if (externalLink) {
+        externalLink.addEventListener("click", function(event) {
+            event.preventDefault(); 
+            const userConfirmation = confirm("Anda akan meninggalkan halaman ini dan menuju ke situs lain. Apakah Anda yakin?");
+            
+            if (userConfirmation) {
+                window.open(this.href, "_blank"); 
             }
         });
-    });
+    }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const text = "Selamat Datang di Perpustakaan Dian Fadhilla Siregar";
+    const typingElement = document.getElementById("typing-text");
+    let index = 0;
+
+    function typeText() {
+        if (index < text.length) {
+            const span = document.createElement("span");
+            span.textContent = text.charAt(index);
+            span.classList.add("fade-in"); 
+            typingElement.appendChild(span);
+            index++;
+            setTimeout(typeText, 20); 
+        }
+    }
+
+    typeText();
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const tableCells = document.querySelectorAll("table th, table td"); 
+    function resetFadeIn() {
+        
+        tableCells.forEach(cell => {
+            cell.style.opacity = "0";
+            cell.style.transform = "translateY(15px)";
+            cell.style.transition = "none"; 
+        });
+
+        
+        setTimeout(() => {
+            tableCells.forEach(cell => {
+                cell.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
+                cell.style.opacity = "1";
+                cell.style.transform = "translateY(0)";
+            });
+        }, 50); 
+    }
+
+    
+    resetFadeIn();
+});
+
+document.addEventListener("DOMContentLoaded", loadComments);
+
+function addComment() {
+    let username = document.getElementById("username").value.trim();
+    let commentText = document.getElementById("comment").value.trim();
+
+    if (username === "" || commentText === "") {
+        alert("Nama dan komentar tidak boleh kosong!");
+        return;
+    }
+
+    let comment = { name: username, text: commentText };
+    let comments = JSON.parse(localStorage.getItem("comments")) || [];
+    comments.push(comment);
+
+
+    
+    document.getElementById("username").value = "";
+    document.getElementById("comment").value = "";
+
+    
+    loadComments();
+}
+
+function loadComments() {
+    let comments = JSON.parse(localStorage.getItem("comments")) || [];
+    let commentSection = document.getElementById("comments");
+
+    
+    commentSection.innerHTML = "";
+
+    comments.forEach(comment => {
+        let commentDiv = document.createElement("div");
+        commentDiv.classList.add("comment");
+        commentDiv.innerHTML = `<strong>${comment.name}:</strong> ${comment.text}`;
+        commentSection.appendChild(commentDiv);
+    });
+}
+
+
