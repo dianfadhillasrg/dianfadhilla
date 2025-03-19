@@ -71,12 +71,14 @@ function addComment() {
     let comments = JSON.parse(localStorage.getItem("comments")) || [];
     comments.push(comment);
 
+    // **Simpan komentar ke Local Storage**
+    localStorage.setItem("comments", JSON.stringify(comments));
 
-    
+    // **Kosongkan input setelah komentar dikirim**
     document.getElementById("username").value = "";
     document.getElementById("comment").value = "";
 
-    
+    // **Tampilkan komentar terbaru**
     loadComments();
 }
 
@@ -94,5 +96,3 @@ function loadComments() {
         commentSection.appendChild(commentDiv);
     });
 }
-
-
