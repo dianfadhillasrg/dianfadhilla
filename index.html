@@ -4,26 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perpustakaan Dian Fadhilla Siregar</title>
-    <link rel="stylesheet" href="style-index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style-combined.css">
 </head>
 <body>
     <div class="header">
         <h1>Perpustakaan Dian Fadhilla Siregar</h1>
         <div class="nav">
+            <a href="index.html">Homepage</a>
             <a href="about.html">About Us</a>
             <a href="contact.html">Contact Us</a>
         </div>
     </div>
     <div class="container">
-        <h2>Selamat Datang di Perpustakaan Dian Fadhilla Siregar</h2>
+        <h2 id="typing-text"></h2>
+        <h2></h2>
         <p>Halo! Saya Dian Fadhilla Siregar, mahasiswa Universitas Sumatera Utara. Website ini saya buat sebagai repository pribadi untuk menyimpan dan membagikan berbagai materi akademik yang saya kumpulkan selama perkuliahan.</p>
-        
+
         <p>Website ini berisi kumpulan tugas mata kuliah Pengembangan Web yang saya kerjakan selama satu semester. Selain itu, tersedia juga berbagai sumber referensi akademik seperti e-Book dan e-Journal. Koleksi e-Book yang tersedia mencakup berbagai bidang studi, yang dapat membantu mahasiswa dalam memahami materi perkuliahan secara lebih mendalam. Sementara itu, e-Journal yang dikumpulkan dalam website ini berisi berbagai jurnal elektronik yang dapat digunakan sebagai referensi akademik dalam penelitian dan tugas akhir.</p>
-        
         <p>Website ini juga berkolaborasi dengan <a href="https://e-resources.perpusnas.go.id/" target="_blank">Perpustakaan Nasional Republik Indonesia</a> dalam menyediakan akses terhadap e-resources yang bermanfaat bagi mahasiswa. </p>
-        
         <p>Semoga website ini bisa menjadi wadah berbagi ilmu dan membantu teman-teman dalam mendapatkan referensi yang dibutuhkan.</p>
+    </div>   
+    <div class="container">
+        <h2>Berikan Komentar Anda</h2>
+        <div class="comment-box">
+            <input type="text" id="username" placeholder="Nama Anda">
+            <textarea id="comment" placeholder="Tulis komentar Anda..."></textarea>
+            <button onclick="addComment()">Kirim Komentar</button>
+        </div>
+        <div id="commentSection">
+            <h3>Komentar:</h3>
+            <div id="comments"></div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
+
