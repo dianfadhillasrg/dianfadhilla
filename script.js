@@ -56,43 +56,36 @@ document.addEventListener("DOMContentLoaded", function () {
     resetFadeIn();
 });
 
-document.addEventListener("DOMContentLoaded", loadComments);
 
-function addComment() {
-    let username = document.getElementById("username").value.trim();
-    let commentText = document.getElementById("comment").value.trim();
 
-    if (username === "" || commentText === "") {
-        alert("Nama dan komentar tidak boleh kosong!");
-        return;
-    }
+const newsContainer = document.querySelector('.news-container');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
 
-    let comment = { name: username, text: commentText };
-    let comments = JSON.parse(localStorage.getItem("comments")) || [];
-    comments.push(comment);
+const newsCards = document.querySelectorAll('.news-card');
+const totalNews = newsCards.length;
+const itemsPerSlide = 3;
+let currentSlide = 0;
 
-    // **Simpan komentar ke Local Storage**
-    localStorage.setItem("comments", JSON.stringify(comments));
-
-    // **Kosongkan input setelah komentar dikirim**
-    document.getElementById("username").value = "";
-    document.getElementById("comment").value = "";
-
-    // **Tampilkan komentar terbaru**
-    loadComments();
+function updateSlide() {
+  const offset = -(currentSlide * 100);
+  newsContainer.style.transform = `translateX(${offset}%)`;
 }
 
-function loadComments() {
-    let comments = JSON.parse(localStorage.getItem("comments")) || [];
-    let commentSection = document.getElementById("comments");
+nextBtn.addEventListener('click', () => {
+  if (currentSlide < Math.ceil(totalNews / itemsPerSlide) - 1) {
+    currentSlide++;
+  } else {
+    currentSlide = 0; // balik ke awal
+  }
+  updateSlide();
+});
 
-    
-    commentSection.innerHTML = "";
-
-    comments.forEach(comment => {
-        let commentDiv = document.createElement("div");
-        commentDiv.classList.add("comment");
-        commentDiv.innerHTML = `<strong>${comment.name}:</strong> ${comment.text}`;
-        commentSection.appendChild(commentDiv);
-    });
-}
+prevBtn.addEventListener('click', () => {
+  if (currentSlide > 0) {
+    currentSlide--;
+  } else {
+    currentSlide = Math.ceil(totalNews / itemsPerSlide) - 1; // ke slide terakhir
+  }
+  updateSlide();
+});
