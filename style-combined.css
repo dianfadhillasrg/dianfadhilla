@@ -156,11 +156,11 @@ a {
 }
 
 a:hover {
-    color: #ff0000; /* Warna saat hover */
+    color: #ff0000; 
 }
 
 a:active {
-    color: #ff0000; /* Warna saat ditekan */
+    color: #ff0000; 
 }
 
 html, body {
@@ -260,10 +260,14 @@ html, body {
     right: 10px;
   }
   
-  /* Responsive */
+
   @media (max-width: 768px) {
     .news-card {
       flex: 0 0 100%;
     }
+  }
+  
+  .news-card a {
+    color: #007bff; 
   }
   
