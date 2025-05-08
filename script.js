@@ -78,7 +78,7 @@ function updateSlide() {
   });
 
   const offset = -(currentSlide * 100);
-  newsContainer.style.transform = `translateX(${offset}%)`;
+newsContainer.style.transform = `translateX(${offset}%)`;
 }
 
 nextBtn.addEventListener('click', () => {
@@ -100,3 +100,36 @@ window.addEventListener('resize', () => {
 });
 
 updateSlide();
+
+document.addEventListener("DOMContentLoaded", function () {
+  const navLinks = document.querySelectorAll('.nav a');
+  const modalBody = document.getElementById('navModalBody');
+  const proceedLink = document.getElementById('proceedLink');
+  const navModal = new bootstrap.Modal(document.getElementById('navModal'));
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
+      const target = this.getAttribute('href');
+      
+      // Cegah langsung pindah halaman
+      e.preventDefault();
+
+      // Cek tujuan link
+      if (target.includes('about.html')) {
+        modalBody.textContent = 'Kenali lebih lanjut perpustakaan ini di sini.';
+      } else if (target.includes('contact.html')) {
+        modalBody.textContent = 'Ada pertanyaan atau saran? Hubungi kami di sini.';
+      } else {
+        // Untuk link lain tetap pindah langsung
+        window.location.href = target;
+        return;
+      }
+
+      // Set link tujuan
+      proceedLink.href = target;
+
+      // Tampilkan modal
+      navModal.show();
+    });
+  });
+});
