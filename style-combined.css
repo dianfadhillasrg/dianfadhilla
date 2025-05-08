@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #fffbe7;
+    background-color: #eaeaea;
     text-align: justify;
 }
 .header {
@@ -12,14 +12,14 @@ body {
     align-items: center;
     background-color: #0d3a71;
     padding: 15px 20px;
-    color: #fffbe7;
+    color: #eaeaea;
     text-align: center;
 }
 .header h1 {
     margin: 0;
     flex-grow: 1;
     text-align: left;
-    color: #fffbe7;
+    color: #eaeaea;
 }
 .nav {
     display: flex;
@@ -29,13 +29,13 @@ body {
     width: 100%;
 }
 .nav a {
-    color: #fffbe7;
+    color: #eaeaea;
     text-decoration: none;
     padding: 5px 10px;
     transition: background-color 0.3s, color 0.3s;
 }
 .nav a:hover {
-    background-color: #fffbe7;
+    background-color: #eaeaea;
     color: #0d3a71;
     border-radius: 4px;
 }
@@ -44,9 +44,10 @@ body {
     max-width: 1000px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fffbe7;
+    background-color: #eaeaea;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
 }
 h1, h2, h3 {
     color: #0d3a71;
@@ -66,7 +67,7 @@ th, td {
     text-align: left;
 }
 th {
-    background-color: #fffbe7;
+    background-color: #eaeaea;
     color: #000000;
 }
 
@@ -154,11 +155,9 @@ a {
     text-decoration: none;
     transition: color 0.3s;
 }
-
 a:hover {
     color: #ff0000; 
 }
-
 a:active {
     color: #ff0000; 
 }
@@ -169,9 +168,6 @@ html, body {
     flex-direction: column;
 }
 
-.container {
-    flex: 1;
-}
 .footer {
     background-color: #0d3a71;
     color: #fffbe7;
@@ -184,62 +180,59 @@ html, body {
     width: 100%;
 }
 
+/* NEWS SLIDER FIXED */
 .news-section {
     padding: 40px;
     text-align: center;
-  }
-  
-  .news-slider {
+}
+
+.news-slider {
     position: relative;
-    overflow: hidden;
-  }
-  
-  .news-wrapper {
-    overflow: hidden;
-  }
-  
-  .news-container {
+}
+
+.news-container {
     display: flex;
     transition: transform 0.5s ease-in-out;
-  }
-  
-  .news-card {
+    overflow: hidden;
+}
+
+.news-card {
     flex: 0 0 33.33%;
     box-sizing: border-box;
     padding: 10px;
     transition: transform 0.3s;
-  }
-  
-  .news-card img {
+}
+
+.news-card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
     border-radius: 10px;
-  }
-  
-  .news-card:hover {
+}
+
+.news-card:hover {
     transform: scale(1.03);
     box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
-  }
-  
-  .news-card a {
+}
+
+.news-card a {
     text-decoration: none;
     color: inherit;
-  }
-  
-  .news-card h3 {
+}
+
+.news-card h3 {
     margin: 10px 0 5px;
     font-size: 18px;
     color: #333;
-  }
-  
-  .news-card p {
+}
+
+.news-card p {
     color: #777;
     font-size: 14px;
-  }
-  
-  .prev-btn,
-  .next-btn {
+}
+
+.prev-btn,
+.next-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -249,25 +242,23 @@ html, body {
     padding: 10px;
     cursor: pointer;
     border-radius: 50%;
-    z-index: 2;
-  }
-  
-  .prev-btn {
-    left: 10px;
-  }
-  
-  .next-btn {
-    right: 10px;
-  }
-  
+    z-index: 10; /* FIX tombol supaya di atas slider */
+}
 
-  @media (max-width: 768px) {
+.prev-btn {
+    left: -20px;
+}
+
+.next-btn {
+    right: -20px;
+}
+
+@media (max-width: 768px) {
     .news-card {
-      flex: 0 0 100%;
+        flex: 0 0 100%;
     }
-  }
-  
-  .news-card a {
+}
+
+.news-card a {
     color: #007bff; 
-  }
-  
+}
