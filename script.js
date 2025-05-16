@@ -133,3 +133,54 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+
+// Cookie helpers
+function setCookie(name, value, days) {
+  const d = new Date();
+  d.setTime(d.getTime() + (days*24*60*60*1000));
+  document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/`;
+}
+
+function getCookie(name) {
+  const cname = name + "=";
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const ca = decodedCookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i].trim();
+    if (c.indexOf(cname) === 0) {
+      return c.substring(cname.length, c.length);
+    }
+  }
+  return "";
+}
+
+// Tampilkan sapaan
+function showGreeting(name) {
+  const greetingArea = document.getElementById("greeting-area");
+  const greetingText = document.getElementById("greeting-text");
+  greetingText.textContent = `Selamat datang kembali, ${name}!`;
+  greetingArea.style.display = "block";
+}
+
+// Simpan nama dari modal
+function saveUsername() {
+  const name = document.getElementById("usernameInput").value;
+  if (name) {
+    setCookie("username", name, 30);
+    showGreeting(name);
+    const modal = bootstrap.Modal.getInstance(document.getElementById("nameModal"));
+    modal.hide();
+  }
+}
+
+// Saat halaman dimuat
+window.onload = function() {
+  const username = getCookie("username");
+  if (username) {
+    showGreeting(username);
+  } else {
+    const myModal = new bootstrap.Modal(document.getElementById("nameModal"));
+    myModal.show();
+  }
+};
